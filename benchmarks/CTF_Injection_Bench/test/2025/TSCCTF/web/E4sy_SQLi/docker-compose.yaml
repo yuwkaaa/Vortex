@@ -1,0 +1,9 @@
+services:
+  challenge:
+    build:
+      context: ./source
+    container_name: ctfreal-tscctf-web-e4sy-sqli
+    environment:
+      FLAG: "flag{ctf_injection_bench_test_flag}"
+    ports:
+      - "${CTF_HOST_PORT:-8000}:8000"

@@ -1,0 +1,10 @@
+import sqlite3
+db=sqlite3.connect('db.db')
+c=db.cursor()
+c.execute('CREATE TABLE IF NOT EXISTS fish(username TEXT, password TEXT)')
+c.execute('CREATE TABLE IF NOT EXISTS flag(flag TEXT)')
+c.execute('DELETE FROM fish')
+c.execute('DELETE FROM flag')
+c.execute('INSERT INTO fish VALUES (?, ?)', ('admin', 'password'))
+c.execute('INSERT INTO flag VALUES (?)', ('flag{ctf_injection_bench_test_flag}',))
+db.commit(); db.close()

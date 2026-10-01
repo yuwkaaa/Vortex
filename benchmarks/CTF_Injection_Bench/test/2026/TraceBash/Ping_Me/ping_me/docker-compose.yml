@@ -1,0 +1,16 @@
+services:
+  ping_me:
+    build: .
+    ports:
+      - "5030:5030"
+    environment:
+      - FLAG=TBCTF{dummy}
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 256m
+    cpus: 1
+    pids_limit: 1024

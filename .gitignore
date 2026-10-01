@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+/.env
+/.env.*.bak
+*.egg-info/
+dist/
+build/
+*.log
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+.DS_Store
+paper/
+.venv/
+tests/

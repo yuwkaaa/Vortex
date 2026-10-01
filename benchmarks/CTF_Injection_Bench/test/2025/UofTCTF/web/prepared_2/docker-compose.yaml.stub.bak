@@ -1,0 +1,9 @@
+services:
+  challenge:
+    build:
+      context: ./.benchmark_runtime
+    container_name: ctf-injection-uoftctf-2025-prepared-2
+    environment:
+      FLAG: "uoftctf{5h3_53ll5_534_5h3ll5_by_7h3_C_5h0r3_c9b821c}"
+    ports:
+      - "${CTF_HOST_PORT:-8000}:8000"

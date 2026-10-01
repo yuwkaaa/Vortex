@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Загрузить фото — Photo Storage{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Загрузить фото</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="photo">Выберите изображение</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+
+        <button type="submit" class="btn">Загрузить</button>
+    </form>
+    <p class="form-footer">Разрешены только картинки.</p>
+</div>
+{% endblock %}

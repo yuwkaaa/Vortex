@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Сообщить об ошибке — Photo Storage{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Сообщить об ошибке</h2>
+    <p>Нашли проблему? Укажите ссылку — наш бот проверит её.</p>
+    <form method="POST">
+        <label for="url">Ссылка</label>
+        <input type="url" id="url" name="url" placeholder="http://..." required>
+
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-success">{{ result }}</div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+</div>
+{% endblock %}

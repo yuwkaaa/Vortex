@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: ../../.benchmark_runtime
+    container_name: ctf-waf-prepared-2-app
+    expose:
+    - '8000'
+    restart: 'no'
+    environment:
+      FLAG: uoftctf{5h3_53ll5_534_5h3ll5_by_7h3_C_5h0r3_c9b821c}
+  challenge:
+    image: owasp/modsecurity-crs:nginx
+    container_name: ctf-waf-prepared-2-pl2
+    depends_on:
+    - app
+    environment:
+      BACKEND: http://app:8000
+      PORT: '8080'
+      SERVER_NAME: localhost
+      MODSEC_RULE_ENGINE: 'On'
+      PARANOIA: '2'
+      BLOCKING_PARANOIA: '2'
+      DETECTION_PARANOIA: '2'
+      ANOMALY_INBOUND: '5'
+      ANOMALY_OUTBOUND: '4'
+      MODSEC_REQ_BODY_ACCESS: 'On'
+      MODSEC_RESP_BODY_ACCESS: 'On'
+    ports:
+    - ${CTF_HOST_PORT:-8080}:8080
+    restart: 'no'

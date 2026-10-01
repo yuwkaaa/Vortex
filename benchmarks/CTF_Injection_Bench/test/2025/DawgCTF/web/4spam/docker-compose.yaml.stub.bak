@@ -1,0 +1,9 @@
+services:
+  challenge:
+    build:
+      context: ./.benchmark_runtime
+    container_name: ctf-injection-dawgctf-2025-4spam
+    environment:
+      FLAG: "flag{ctf_injection_bench_test_flag}"
+    ports:
+      - "${CTF_HOST_PORT:-8000}:8000"

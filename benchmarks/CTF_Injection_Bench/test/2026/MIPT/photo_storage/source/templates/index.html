@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Photo Storage — Хранилище фотографий{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Добро пожаловать в Photo Storage</h1>
+    <p>Загружайте, храните и делитесь своими фотографиями.</p>
+    {% if user %}
+    <a class="btn" href="{{ url_for('gallery') }}">Моя галерея</a>
+    {% else %}
+    <a class="btn" href="{{ url_for('register') }}">Зарегистрироваться</a>
+    <a class="btn btn-outline" href="{{ url_for('login') }}">Войти</a>
+    {% endif %}
+</div>
+{% endblock %}

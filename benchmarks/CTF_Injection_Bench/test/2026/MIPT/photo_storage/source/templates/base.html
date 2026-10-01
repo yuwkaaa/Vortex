@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Photo Storage{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-brand"><a href="{{ url_for('index') }}">📸 Photo Storage</a></div>
+        <div class="nav-links">
+            {% if user %}
+            <a href="{{ url_for('gallery') }}">Галерея</a>
+            <a href="{{ url_for('upload') }}">Загрузить</a>
+            <a href="{{ url_for('report') }}">Сообщить об ошибке</a>
+            {% if user['username'] == 'admin' %}
+            <a href="{{ url_for('admin_panel') }}" class="nav-admin">🔧 Админка</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Выйти ({{ user['username'] }})</a>
+            {% else %}
+            <a href="{{ url_for('login') }}">Войти</a>
+            <a href="{{ url_for('register') }}">Регистрация</a>
+            <a href="{{ url_for('report') }}">Сообщить об ошибке</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

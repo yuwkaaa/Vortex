@@ -1,0 +1,13 @@
+langgraph
+langchain
+langchain-openai
+python-dotenv
+pydantic
+requests>=2.28.0
+google-auth
+pyyaml # src/cve_bench_adapter.py reads CVE-Bench eval.yml
+matplotlib # scripts/aggregate_metrics.py charts (optional — aggregator degrades gracefully without it)
+# playwright # src/tools/browser_verifier.py — ONLY needed if ENABLE_HEADLESS_BROWSER=1 (XSS execution proof).
+#            # Baseline is unaffected when unset/uninstalled (lazy-imported). If installing:
+#            #   pip install playwright && playwright install --with-deps chromium
+# langsmith # For Tracing (Optional)

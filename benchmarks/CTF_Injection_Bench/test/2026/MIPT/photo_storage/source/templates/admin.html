@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}Админ-панель — Photo Storage{%
+endblock %} {% block content %}
+<div class="admin-panel">
+    <h2>🔧 Админ-панель</h2>
+
+    <div class="admin-section">
+        <h3>Сжатие фотографий</h3>
+        <p class="admin-hint">
+            Утилита для оптимизации изображений через
+            <code>convert</code> (ImageMagick).
+        </p>
+        <form
+            method="POST"
+            action="{{ url_for('admin_compress') }}"
+            class="compress-form"
+        >
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+            <label for="file_id">ID файла</label>
+            <select id="file_id" name="file_id" required>
+                <option value="" disabled selected>Выберите файл…</option>
+                {% for f in files %}
+                <option value="{{ f['id'] }}">
+                    {{ f['original_name'] }} ({{ f['username'] }})
+                </option>
+                {% endfor %}
+            </select>
+
+            <label for="quality">Качество (1–100)</label>
+            <input
+                type="text"
+                id="quality"
+                name="quality"
+                placeholder="85"
+                required
+            />
+
+            <button type="submit" class="btn">Сжать</button>
+        </form>
+    </div>
+
+    <div class="admin-section">
+        <h3>Все загруженные файлы</h3>
+        {% if files %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Превью</th>
+                    <th>Имя файла</th>
+                    <th>Пользователь</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in files %}
+                <tr>
+                    <td class="preview-cell">
+                        <img
+                            src="{{ url_for('public_file', file_id=f['id']) }}"
+                            alt="{{ f['original_name'] }}"
+                        />
+                    </td>
+                    <td>{{ f['original_name'] }}</td>
+                    <td>{{ f['username'] }}</td>
+                    <td><code>{{ f['id'][:8] }}…</code></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="empty-state">Нет загруженных файлов.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "total": 8,
+  "runnable_local": 8,
+  "by_reconstruction_type": {
+    "original-runnable": 3,
+    "dockerized-source": 3,
+    "shared-original-attachment": 1,
+    "synthetic-compatible": 1
+  },
+  "by_runtime_status": {
+    "docker-compose": 8
+  }
+}

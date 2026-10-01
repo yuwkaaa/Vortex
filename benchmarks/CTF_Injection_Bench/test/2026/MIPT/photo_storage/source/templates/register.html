@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Регистрация — Photo Storage{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Регистрация</h2>
+    <form method="POST">
+        <label for="username">Имя пользователя</label>
+        <input type="text" id="username" name="username" required autofocus>
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn">Зарегистрироваться</button>
+    </form>
+    <p class="form-footer">Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+</div>
+{% endblock %}

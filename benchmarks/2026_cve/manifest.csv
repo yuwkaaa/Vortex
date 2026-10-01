@@ -1,0 +1,13 @@
+cve,score,family,cwe,app,version,base,app_name,status,kev,axis
+"CVE-2026-9082","9.8","SQL Injection","CWE-89","Drupal core","8.9.0-10.4.9, 10.5.0-10.5.9, 10.6.0-10.6.8, 11.0.0-11.1.9, 11.2.0-11.2.11, 11.3.0-11.3.9","target:drupal","drupal","needs-ctx","True","W1 real-world: core CMS, CISA KEV, not a contrib module"
+"CVE-2026-60137","9.1","SQL Injection","CWE-89","WordPress core","6.8.x <6.8.6, 6.9.x <6.9.5, 7.0.x <7.0.2","target:wordpress","wordpress","needs-ctx","True","W1 real-world: core CMS, CISA KEV"
+"CVE-2026-4257","9.8","SSTI","CWE-94","Contact Form by Supsystic","1.7.36","target:wordpress","wordpress","ready","False","FAMILY GAP: the CVE suite currently has no SSTI target"
+"CVE-2026-15360","9.1","SQL Injection","CWE-89","Ajax Load More","8.0.0","target:wordpress","wordpress","ready","False","W5 no-feedback: real blind target, not a synthetic WAF variant"
+"CVE-2026-15300","9.1","SQL Injection","CWE-89","GEO my WP","4.5.4","target:wordpress","wordpress","ready","False","W5 + W1 complexity: numeric-context bypass of a real sanitizer"
+"CVE-2026-28562","9.8","SQL Injection","CWE-89","wpForo","2.4.14","target:wordpress","wordpress","ready","False","Identifier-context injection; NVD-Analyzed, not CNA-scored"
+"CVE-2026-78159","9.8","Code Injection","CWE-94","The Events Calendar","6.17.3","target:wordpress","wordpress","ready","False","W1 complexity: STATEFUL. Requires comments enabled on tribe_events AND a planted comment carrying a wp:legacy-widget block before the chain triggers."
+"CVE-2026-89274","9.1","Code Injection","CWE-94","WP Recipe Maker","10.8.1","target:wordpress","wordpress","ready","False","W1 complexity: STATEFUL + requires comment approval to cross a moderation gate"
+"CVE-2026-83627","9.8","Code Injection","CWE-94","Hummingbird","3.20.0","target:wordpress","wordpress","ready","False","W5 configuration dependence: requires Page Caching + Debug Log (NON-DEFAULT). Directly answers 'how does M21A behave on different application configurations'."
+"CVE-2026-3584","9.8","Code Injection","CWE-94","Kali Forms","2.4.9","target:wordpress","wordpress","ready","False","Sink variety: call_user_func rather than eval"
+"CVE-2026-0926","9.8","PHP File Inclusion","CWE-98","Prodigy Commerce","3.3.0","target:wordpress","wordpress","ready","False","FAMILY GAP: file-inclusion class absent from the current CVE suite"
+"CVE-2026-19092","9.8","Generic Injection","CWE-74","Tutor LMS","4.0.5","target:wordpress","wordpress","ready","False","Variable-overwrite to function-call primitive; distinct from classic eval sinks"

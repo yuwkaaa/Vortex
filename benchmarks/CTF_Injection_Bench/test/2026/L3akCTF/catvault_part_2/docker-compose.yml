@@ -1,0 +1,15 @@
+services:
+  catvault:
+    build: .
+    restart: unless-stopped
+    container_name: catvault
+    ports:
+      - "5098:8080"
+    volumes:
+      - ./flag.txt:/flag.txt
+    environment:
+      FLAG: "flag{ctf_injection_bench_test_flag}"
+      MARIADB_RANDOM_ROOT_PASSWORD: "1"
+      MARIADB_DATABASE: "catvault"
+      MARIADB_USER: "meower"
+      MARIADB_PASSWORD: "meowmeowmeow"

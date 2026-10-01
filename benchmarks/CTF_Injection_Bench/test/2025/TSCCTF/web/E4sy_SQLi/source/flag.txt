@@ -1,0 +1,1 @@
+flag{ctf_injection_bench_test_flag}

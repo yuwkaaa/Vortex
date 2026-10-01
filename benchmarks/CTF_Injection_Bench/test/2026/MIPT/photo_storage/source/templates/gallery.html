@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Моя галерея — Photo Storage{% endblock %}
+
+{% block content %}
+<div class="gallery-header">
+    <h2>Моя галерея</h2>
+    <a class="btn" href="{{ url_for('upload') }}">+ Загрузить фото</a>
+</div>
+
+{% if files %}
+<div class="gallery-grid">
+    {% for f in files %}
+    <div class="gallery-card">
+        <div class="gallery-preview">
+            <img src="{{ url_for('public_file', file_id=f['id']) }}" alt="{{ f['original_name'] }}">
+        </div>
+        <div class="gallery-info">
+            <span class="filename">{{ f['original_name'] }}</span>
+            <div class="gallery-actions">
+                <a href="{{ url_for('public_file', file_id=f['id']) }}" target="_blank" class="btn btn-sm">Открыть</a>
+                <button class="btn btn-sm btn-outline copy-link" data-url="{{ request.host_url }}file/{{ f['id'] }}">
+                    Копировать ссылку
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <p>У вас пока нет фотографий.</p>
+    <a class="btn" href="{{ url_for('upload') }}">Загрузить первую!</a>
+</div>
+{% endif %}
+
+<script>
+    document.querySelectorAll('.copy-link').forEach(btn => {
+        btn.addEventListener('click', () => {
+            navigator.clipboard.writeText(btn.dataset.url).then(() => {
+                btn.textContent = 'Скопировано!';
+                setTimeout(() => btn.textContent = 'Копировать ссылку', 2000);
+            });
+        });
+    });
+</script>
+{% endblock %}

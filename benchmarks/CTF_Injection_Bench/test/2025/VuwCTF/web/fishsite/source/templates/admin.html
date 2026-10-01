@@ -1,0 +1,2 @@
+<!doctype html><title>admarine</title><form method="post" action="/monitor"><textarea name="query"></textarea><button>run</button></form>{% if error %}<p>{{ error }}</p>{% endif %}{% if rows %}<pre>{% for row in rows %}{{ row }}
+{% endfor %}</pre>{% endif %}
